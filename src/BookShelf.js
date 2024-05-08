@@ -224,7 +224,7 @@ return (
                 </div>
               </div> */}
            </div>
-           {/* <div className="open-search"> */}
+           <div className="open-search">
             {/* <Link to={{
                 pathname: '/search',
                 state: {
@@ -233,9 +233,9 @@ return (
             }}
             /> */}
             <Link className="open-search" to="/search">
-            Add
+              Add
             </Link>
-          {/* </div> */}
+          </div>
         </div>
     </div>
     );
