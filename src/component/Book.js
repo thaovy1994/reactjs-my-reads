@@ -1,10 +1,7 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import noThumbnailImage from './icons/no_cover_thumb.gif'
+import React from 'react';
 
-function Book(props) {
+function Book({book, changeShelf}) {
 
-    const { book, changeShelf } = props
     return (
         <li>
             <div className="book">
@@ -12,7 +9,7 @@ function Book(props) {
                     <div className="book-cover" style={{ 
                         width: 128, 
                         height: 193, 
-                        backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : noThumbnailImage})` 
+                        backgroundImage: `url(${book.imageLinks.thumbnail})` 
                         }}>
                     </div>
                     <div className="book-shelf-changer">
@@ -27,7 +24,7 @@ function Book(props) {
                         </select>
                     </div>
                 </div>
-                <div className="book-title">{book.title ? book.title : null}</div>
+                <div className="book-title">{book.title}</div>
                 {book.authors &&
                     book.authors.map((author, index) => (
                         <div className="book-authors" key={index}>{author}</div>
@@ -36,10 +33,5 @@ function Book(props) {
         </li>
     )
 }
-
-Book.propTypes = {
-    book: PropTypes.object.isRequired,
-    changeShelf: PropTypes.func.isRequired
-};
 
 export default Book;
