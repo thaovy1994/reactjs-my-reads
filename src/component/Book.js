@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import noImageAvailable from '..//icons/image-not-available.jpg';
 
 function Book({book, changeShelf}) {
 
@@ -7,14 +9,14 @@ function Book({book, changeShelf}) {
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ 
-                        width: 128, 
-                        height: 193, 
-                        backgroundImage: `url(${book.imageLinks.thumbnail})` 
+                        width: 120, 
+                        height: 190, 
+                        backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : noImageAvailable})` 
                         }}>
                     </div>
                     <div className="book-shelf-changer">
                         <select
-                            onChange={(event) => changeShelf(book, event.target.value)}
+                            onChange={(e) => changeShelf(book, e.target.value)}
                             value={book.shelf ? book.shelf : 'none'}>
                             <option value="moveTo" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
@@ -33,5 +35,10 @@ function Book({book, changeShelf}) {
         </li>
     )
 }
+
+Book.prototype = {
+    book: PropTypes.object.isRequired,
+    changeShelf: PropTypes.func.isRequired
+};
 
 export default Book;

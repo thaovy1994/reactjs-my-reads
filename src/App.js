@@ -14,6 +14,9 @@ function App() {
           </div>
           <Routes>
             <Route 
+              path="*" 
+              element={<NotFound />} />
+            <Route 
               exact path="/" 
               element={<BookShelf/>} 
             />

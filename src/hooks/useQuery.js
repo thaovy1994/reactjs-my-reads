@@ -3,10 +3,10 @@ import { useDebounce } from 'use-debounce';
 import * as BooksAPI from '..//BooksAPI';
 
 
-export default function useQuery(query) {
+function useQuery(query) {
 
     const [searchBooks, setSearchBooks] = useState([]);
-    const [value] = useDebounce(query, 500);
+    const [value] = useDebounce(query, 100);
 
     useEffect(() => {
 
@@ -34,3 +34,5 @@ export default function useQuery(query) {
     return [searchBooks, setSearchBooks];
 
 }
+
+export default useQuery;

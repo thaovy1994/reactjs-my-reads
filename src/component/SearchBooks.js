@@ -43,12 +43,12 @@ const SearchBooks =() => {
   }
 
   const changeShelf = (book, whereTo) => {
-    const updatedBooks = books.map(b => {
-      if (b.id === book.id) {
+    const updatedBooks = books.map(e => {
+      if (e.id === book.id) {
         book.shelf = whereTo;
         return book;
       }
-      return b;
+      return e;
     })
     if (!mapOfIdToBooks.has(book.id)) {
       book.shelf = whereTo;
@@ -67,16 +67,16 @@ const SearchBooks =() => {
             <div className="search-books-input-wrapper">
               <input
                 type="text"
-                value={query} onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by title, author, or ISBN"
               />
             </div>
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-                  {mergedBooks.map(b => (
-                    <li key={b.id}>
-                      <Book book={b} changeShelf={changeShelf} />
+                  {mergedBooks.map(e => (
+                    <li key={e.id}>
+                      <Book book={e} changeShelf={changeShelf} />
                     </li>
                   ))}
             </ol>
